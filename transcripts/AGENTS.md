@@ -24,3 +24,8 @@
 - Never add content that was not said.
 - Do not summarize.
 - Report your changes to the reviewer in your reply, not inside the transcript file.
+
+## Scribe Minutes
+
+- Scribe and minutes generated from transcripts go into /minutes
+

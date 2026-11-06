@@ -8,7 +8,7 @@
 ## Attendees
 
 - Vinnie Falco (VF) - instructor
-- Cynthia (CY) - TA [AMB-13]
+- Cynthia Prevatte (CY) - TA
 
 ## Summary
 
@@ -155,7 +155,7 @@ CY: I think it would be better if they all worked in Cursor.
 
 VF: The format is that I talk, tell stories, or take questions for an hour. We take that transcript, and one or two people scribe it. First they add it to the repository with the timestamp and front matter, with keywords and what it is about, so we can index it later. That is crucial, because it is what we will do when we deploy this at a company.
 
-VF: We will give them a cloud application, a web app, like the one Will just built, the Toctron [?], also called the talktron [AMB-5]. It is the interview tool, and it creates the transcript. On site we interview people, automated or manual, the tool creates the transcript, and it goes into the growing repository. We are enacting that here.
+VF: We will give them a cloud application, a web app, like the one Will just built, the Talktron. It is the interview tool, and it creates the transcript. On site we interview people, automated or manual, the tool creates the transcript, and it goes into the growing repository. We are enacting that here.
 
 CY: Yes, one hundred percent.
 
@@ -353,7 +353,6 @@ CY: Bye. Thanks.
 
 - fruit - "I saw it for the fruit" (CY, 0:48, in reply to the question about the Knowledge Capture Corporation).
 - pi, z - tools some team members use instead of Cursor (VF, 6:57).
-- Toctron, talktron - see AMB-5.
 - acupuncture - "immediate steps and acupuncture" (CY, 18:00). See AMB-9.
 - Unslav - project to copy for the gateway (VF, 23:32).
 - the transient - "You have to put the transient" (VF, 25:59). See AMB-12.
@@ -363,15 +362,12 @@ CY: Bye. Thanks.
 - [AMB-1] "I was just putting together some thoughts and suggestions, but they're irrelevant now cause what? How do you even do that?" (CY, 0:14) - The transcript does not say what made the suggestions irrelevant or what "that" refers to. No best guess. Resolution needed: CY to say what she meant.
 - [AMB-2] "something to do with Harry, yeah?" and "Sure. Mary." (CY 0:51, VF 0:53) - Two different first names, with no clear connection to the Knowledge Capture Corporation. Resolution needed: confirm who or what is meant.
 - [AMB-4] "one of the $200 a month cursor accounts. Or the 20" (VF, 6:36) - The unit and billing period for "the 20" are not stated. Best guess: a $20 per month plan. Resolution needed: confirm the plan.
-- [AMB-5] "the Toctron. The talktron is the interview tool" (VF, 7:49) - Two spellings in one passage. Best guess: one tool, "Talktron". Resolution needed: confirm the name and spelling.
 - [AMB-6] "I need him to do actual work" (VF, 9:44) - "him" has no named referent. Best guess: the AI model, based on the preceding turns. Resolution needed: confirm who is meant.
 - [AMB-8] "They think I'm free." (VF, 17:24) - The last word does not fit the sentence and looks mis-transcribed. No best guess. Resolution needed: VF to supply the word.
 - [AMB-9] "With immediate steps and acupuncture." (CY, 18:00) - Probably a mis-transcription. No best guess. Resolution needed: CY to supply the intended phrase.
 - [AMB-10] "We need a schedule... we need signups" (VF, 18:02) names no owner, and "I'm gonna put something together" (CY, 21:26) does not say whether the document is the lesson plan, the schedule, or both. Resolution needed: confirm the owner of the schedule and signups, and what CY is preparing.
 - [AMB-11] "3, Carol. What's his name? Justin... and Hugh Andrew" (CY, 21:53) - The names of the three new team members are unclear: it is not certain that Carol and Justin are two of the three, and "Hugh Andrew" may be a mis-transcription. Resolution needed: confirm the three names.
 - [AMB-12] "You don't have to put this transcript in the repo." (VF, 25:52) and "You have to put the transient." (VF, 25:59) - The two statements conflict and the second is garbled. At 28:27 VF says he will fix the transcript and put it in the repository. Best guess: the transcript goes in the repository after VF fixes it. Resolution needed: confirm the decision.
-- [AMB-13] The TA's surname is not given in the transcript. The transcript file name suggests "Prevatte", but the call does not say so. Resolution needed: confirm the full name for the Attendees list.
-
 ## Corrections Welcome
 
 Please correct anything that was misunderstood or missed.
