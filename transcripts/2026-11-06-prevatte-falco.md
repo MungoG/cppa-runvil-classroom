@@ -206,7 +206,7 @@
 
 @Cynthia [13:19]: Sure.
 
-@Vinnie [13:19]: So, I, I have created an adaptive learning program called the Pentagogue, that's orchestrated in with the model. Expressed as Runvil, it becomes much more powerful. And you that it's a teaching tool, but it builds teachers, right? In other words, it takes the knowledge database and then it builds the teacher that you talk to, and it's personalized, like, it remembers you, it knows you, it, it knows it, it's, it's, it's interesting, it's good.
+@Vinnie [13:19]: So, I, I have created an adaptive learning program called the Pedagogue, that's orchestrated in with the model. Expressed as Runvil, it becomes much more powerful. And you that it's a teaching tool, but it builds teachers, right? In other words, it takes the knowledge database and then it builds the teacher that you talk to, and it's personalized, like, it remembers you, it knows you, it, it knows it, it's, it's, it's interesting, it's good.
 
 @Vinnie [13:45]: So, the third product is, it's a subscription. People sign up, they can create content, they can create like knowledge bases, like somebody knows for like there's a guy, there's a guy who knows how to create terrariums. He has a YouTube channel, it's beautiful. And he could create a learning program that teaches you, right? And then he puts that up for offer and then other people they can search, and they can interact with it if they want, and then it's like they pay a fee, you know, like it comes like some credits or whatever, and
 

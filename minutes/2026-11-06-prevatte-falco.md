@@ -137,7 +137,7 @@ VF: This is why I want everybody involved. The workflow we use to extract my kno
 
 CY: Oh, OK.
 
-VF: I have been blocked on getting the Knowledge Capture Corporation started. We have prototypes: the Mentographist [?] is an interview tool, and the pedagogue [?] is a teaching tool. We have Sage and the example interview. I do not have the pipeline, the trained people, the prompts, or the infrastructure to automate it. The goal is to go on site to a company whose people are knowledge workers, or nurses, or whatever. We interview them, they relate their stories and experiences at work, and we extract what they know that is not written down. That information can be passed on. If we could have interviewed Steve Jobs, he would have told us how he made sure every iPhone was a hit, and we could have captured it.
+VF: I have been blocked on getting the Knowledge Capture Corporation started. We have prototypes: the Mentographist is an interview tool, and the Pedagogue is a teaching tool. We have Sage and the example interview. I do not have the pipeline, the trained people, the prompts, or the infrastructure to automate it. The goal is to go on site to a company whose people are knowledge workers, or nurses, or whatever. We interview them, they relate their stories and experiences at work, and we extract what they know that is not written down. That information can be passed on. If we could have interviewed Steve Jobs, he would have told us how he made sure every iPhone was a hit, and we could have captured it.
 
 VF: I want to see daily results in this repository. I will make the new repository. There are no more individuals with separate assignments. We are a classroom now, with one assignment, and everyone is responsible for it. People will often have to work together. I want them to have their own half-hour huddle away from me, where they go over the output of the minutes and put together the list of questions they want to ask me next.
 
@@ -189,7 +189,7 @@ VF: The third product is a knowledge marketplace. It is like YouTube, but instea
 
 CY: Vaguely. Yes, adaptive testing, I get it.
 
-VF: Adaptive learning is like adaptive testing, except that you are learning instead of being quizzed, though you still get quizzed. I have created an adaptive learning program called the Pentagogue [AMB-7], orchestrated with the model. Expressed as Runvil it becomes much more powerful. It is a teaching tool that builds teachers: it takes the knowledge database and builds the teacher you talk to. It is personalized, and it remembers you.
+VF: Adaptive learning is like adaptive testing, except that you are learning instead of being quizzed, though you still get quizzed. I have created an adaptive learning program called the Pedagogue, orchestrated with the model. Expressed as Runvil it becomes much more powerful. It is a teaching tool that builds teachers: it takes the knowledge database and builds the teacher you talk to. It is personalized, and it remembers you.
 
 VF: The third product is a subscription. People sign up and create content, such as knowledge bases. For example, there is a man who knows how to create terrariums and has a beautiful YouTube channel. He could create a learning program that teaches you, offer it, and other people can search for it and interact with it. They pay a fee, perhaps in credits. The people who produce content get a cut of the revenue, as on YouTube. People who consume the content can rate it, and here is the trick: randomly, 10 percent of the people who interact with the content get it for free. If they give a rating, they become eligible for another chance at a free product. So at any given time, 10 percent of users are incentivized to give ratings. That is the three products.
 
@@ -352,8 +352,6 @@ CY: Bye. Thanks.
 ## Unknowns [?]
 
 - fruit - "I saw it for the fruit" (CY, 0:48, in reply to the question about the Knowledge Capture Corporation).
-- Mentographist - named as an interview tool (VF, 3:40). Spelling uncertain.
-- pedagogue - named as a teaching tool (VF, 3:52). See AMB-7 for the later spelling "Pentagogue".
 - pi, z - tools some team members use instead of Cursor (VF, 6:57).
 - Toctron, talktron - see AMB-5.
 - acupuncture - "immediate steps and acupuncture" (CY, 18:00). See AMB-9.
@@ -367,7 +365,6 @@ CY: Bye. Thanks.
 - [AMB-4] "one of the $200 a month cursor accounts. Or the 20" (VF, 6:36) - The unit and billing period for "the 20" are not stated. Best guess: a $20 per month plan. Resolution needed: confirm the plan.
 - [AMB-5] "the Toctron. The talktron is the interview tool" (VF, 7:49) - Two spellings in one passage. Best guess: one tool, "Talktron". Resolution needed: confirm the name and spelling.
 - [AMB-6] "I need him to do actual work" (VF, 9:44) - "him" has no named referent. Best guess: the AI model, based on the preceding turns. Resolution needed: confirm who is meant.
-- [AMB-7] "pedagogue" (3:52) and "Pentagogue" (13:19) - Possibly one tool with two spellings, possibly two names. Best guess: one tool. Resolution needed: confirm the name and spelling.
 - [AMB-8] "They think I'm free." (VF, 17:24) - The last word does not fit the sentence and looks mis-transcribed. No best guess. Resolution needed: VF to supply the word.
 - [AMB-9] "With immediate steps and acupuncture." (CY, 18:00) - Probably a mis-transcription. No best guess. Resolution needed: CY to supply the intended phrase.
 - [AMB-10] "We need a schedule... we need signups" (VF, 18:02) names no owner, and "I'm gonna put something together" (CY, 21:26) does not say whether the document is the lesson plan, the schedule, or both. Resolution needed: confirm the owner of the schedule and signups, and what CY is preparing.
