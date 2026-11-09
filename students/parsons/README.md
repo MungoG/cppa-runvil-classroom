@@ -1,1 +1,5 @@
+# Sean Parsons
 
+- [prompts/2026-11-06-extraction.md](prompts/2026-11-06-extraction.md) reads a raw session transcript and extracts a Runvil-first design ledger: subsystem architecture decisions and their constraints, product and pipeline mechanics, transferable engineering and teaching principles (`stated` or `demonstrated`), newcomer mental models, open design questions with next-session probes, and reconstructed speech-to-text terms.
+- [outputs/2026-11-06-class-1.md](outputs/2026-11-06-class-1.md) is that prompt run on [transcripts/2026-11-06-class-1.md](../../transcripts/2026-11-06-class-1.md) (42 extracted items covering per-section authority, Workshop compaction and record-and-replay, Gateway signed/encrypted thinking blocks, and the Knowledge Capture Corporation pipeline).
+- [outputs/2026-11-06-class-2.md](outputs/2026-11-06-class-2.md) is that prompt run on [transcripts/2026-11-06-class-2.md](../../transcripts/2026-11-06-class-2.md) (40 extracted items covering Engine vs. Harness vs. Plug-in boundaries, the VFS deterministic claims table and borrowed `Access` lifecycle, and the synchronous vs. asynchronous VFS plug-in API trade-off).
