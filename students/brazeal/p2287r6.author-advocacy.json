@@ -1,0 +1,105 @@
+{
+  "author": "Barry Revzin",
+  "document_id": "P2287R6",
+  "evidence": [
+    {
+      "id": 1,
+      "kind": "poll",
+      "note": "Varna EWG poll on P2287R2: \"Forward P2287R2 to CWG for inclusion in C++26\" \u2014 SF 7, F 10, N 11, A 8, SA 3, Result: Not Consensus. The committee declined to forward the author's design at that meeting and asked for another revision, so the direction was not endorsed.",
+      "quote": "Forward P2287R2 to CWG for inclusion in C++26.",
+      "quote_by": "erichkeane",
+      "speaker": "other",
+      "stance": "opposing_direction",
+      "title": "P2287 R6 Designated-initializers for base classes (tracker issue comment)",
+      "url": "https://github.com/cplusplus/papers/issues/978",
+      "year": "2023"
+    },
+    {
+      "id": 2,
+      "kind": "poll",
+      "note": "EWG poll on P2287R3: \"forward to CWG for inclusion in C++26\" \u2014 SF 10, F 14, N 7, A 1, SA 1, \"Consensus in favor.\" The committee forwarded the author's design with consensus, supporting its direction.",
+      "quote": "Poll: P2287r3 Designated-initializers for base classes: forward to CWG for inclusion in C++26.",
+      "quote_by": "jfbastien",
+      "speaker": "other",
+      "stance": "same_direction",
+      "title": "P2287 R6 Designated-initializers for base classes (tracker issue comment)",
+      "url": "https://github.com/cplusplus/papers/issues/978",
+      "year": "2025"
+    },
+    {
+      "id": 3,
+      "kind": "poll",
+      "note": "Sofia EWG poll on P2287R5 answering CWG's open design question: first base classes may be initialized with a braced-init-list with the rest left to designated initializers (examples h1-h4 in 3.1) \u2014 SF 9, F 16, N 2, A 2, SA 1, Result: consensus. The committee endorsed the author's mixed-init design.",
+      "quote": "P2287R5: EWG confirms that in the case of multiple base classes, the first ones can be initialized using a braced-init-list, and the rest left for designated initializers, see examples in 3.1, particularly h1-h4.",
+      "quote_by": "hanickadot",
+      "speaker": "other",
+      "stance": "same_direction",
+      "title": "P2287 R6 Designated-initializers for base classes (tracker issue comment)",
+      "url": "https://github.com/cplusplus/papers/issues/978",
+      "year": "2025"
+    },
+    {
+      "id": 4,
+      "kind": "poll",
+      "note": "Kona EWG poll taken with cplusplus/nbballot#651 on US 38-075: \"Designated-initializers for base classes - we want to pursue a change for C++26\" \u2014 SF 4, F 7, N 11, A 4, SA 2, \"not consensus.\" The record does not say what the change would be, so it neither forwards nor rejects the author's design.",
+      "quote": "US 38-075 9.5 [dcl.init] Designated-initializers for base classes - we want to pursue a change for C++26",
+      "quote_by": "je4d",
+      "speaker": "other",
+      "stance": "neutral",
+      "title": "P2287 R6 Designated-initializers for base classes (tracker issue comment)",
+      "url": "https://github.com/cplusplus/papers/issues/978",
+      "year": "2025"
+    },
+    {
+      "id": 5,
+      "kind": "prior revision",
+      "note": "Earlier revision of the paper under scan, authored by Barry Revzin. R2 concedes the R0/R1 mechanism for naming base classes entirely, keeping only designators for direct or indirect non-static data members, and says naming base class subobjects can be done later; across the arc to R6 the base-class naming syntax stays dropped and non-designated initializers for base class subobjects (B{{.a=1}, .b=2}) are added instead.",
+      "quote": "This revision eschews that approach entirely: it\u2019s simpler to just stick with naming members, direct and indirect.",
+      "quote_by": "Barry Revzin",
+      "speaker": "author",
+      "stance": "same_direction",
+      "title": "P2287R2: Designated-initializers for Base Classes",
+      "url": "https://wg21.link/p2287r2",
+      "year": "2023"
+    },
+    {
+      "id": 6,
+      "kind": "reflector thread",
+      "note": "In a std-proposals thread on P2287R4, Jens Maurer replies to a commenter who wants \"::\" instead of \".\" for naming base classes, saying the paper is mostly design-complete and EWG-approved and that anyone proposing a departure from its status quo must convince the paper's authors \u2014 i.e. he defends the paper's existing design against the alternative.",
+      "quote": "The paper is mostly design-complete and EWG-approved; with just a small question open from CWG.",
+      "quote_by": "Jens Maurer",
+      "speaker": "other",
+      "stance": "same_direction",
+      "title": "Re: [std-proposals] P2287R4 Designated initializers for Base Classes - Double Colon",
+      "url": "https://lists.isocpp.org/std-proposals/2025/03/13182.php",
+      "year": "2025"
+    },
+    {
+      "id": 7,
+      "kind": "implementation",
+      "note": "The compare page shows brevzin's Clang branch p2287 with six commits by brevzin (Sep 8 and Oct 27, 2024) implementing the paper's facility: diagnosing non-designated initializers that follow designated ones, synthesizing InitListExpr to handle indirect members, and fixing inheritance and lookup. It is the author's own prototype implementation of P2287 in Clang.",
+      "quote": "[Pxxxx] Nested using declarations, more than 1 {}s.",
+      "quote_by": "Barry Revzin",
+      "speaker": "author",
+      "stance": "same_direction",
+      "title": "Comparing llvm:main...brevzin:p2287 \u00b7 llvm/llvm-project",
+      "url": "https://github.com/llvm/llvm-project/compare/main...brevzin:llvm-project:p2287?expand=1",
+      "year": "2024"
+    },
+    {
+      "id": 8,
+      "kind": "poll",
+      "note": "In the CWG polls recorded in the Brno 2026 minutes, the committee applied the changes in P2287R6 (Designated-initializers for Base Classes) to the C++ Working Paper with no discussion and no objection to unanimous consent, an approved motion supporting the author's design direction.",
+      "quote": "Apply the changes in P2287R6 (Designated-initializers for Base Classes) to the C++ Working Paper. No discussion. No objection to unanimous consent. Approved.",
+      "quote_by": "Braden Ganetsky",
+      "speaker": "other",
+      "stance": "same_direction",
+      "title": "WG21 2026-06 Brno Hybrid Meeting Minutes (N5053)",
+      "url": "https://wg21.link/n5053",
+      "year": "2026"
+    }
+  ],
+  "position": "Revzin\u2019s documented stance toward the recommendation is supportive: his own Clang branch contains commits implementing P2287\u2019s facility [7]. In an earlier revision, he conceded the earlier base-class-naming mechanism [5].",
+  "position_found": true,
+  "title": "Designated-initializers for Base Classes"
+}
