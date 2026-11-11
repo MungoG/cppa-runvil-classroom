@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nash</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --page: light-dark(#f4f2ec, #141519);
+  --card: light-dark(#ffffff, #1e2026);
+  --line: light-dark(#dedad0, #343741);
+  --text: light-dark(#1c1d21, #e8e6e0);
+  --muted: light-dark(#6d6b65, #9d9b93);
+  --accent: light-dark(#2b59c3, #8eaefc);
+  --equilibrium: light-dark(#b3261e, #ff8f85);
+  --pareto: light-dark(#1b7a48, #79d8a0);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: 1.5rem 1.5rem 4rem;
+  background: var(--page);
+  color: var(--text);
+  font: 15px/1.5 system-ui, sans-serif;
+}
+nav { display: flex; gap: 1rem; justify-content: flex-end; color: var(--muted); font-size: 0.85rem; }
+nav a { color: inherit; }
+nav span::before { content: "\25CF"; margin-right: 0.35rem; color: var(--equilibrium); }
+nav span.live::before { color: var(--pareto); }
+h1 { margin: 0.5rem 0 0; font-size: 2rem; line-height: 1.2; }
+h2 { margin: 2.5rem 0 0.9rem; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+p { margin: 0.4rem 0 0.9rem; }
+header { border-radius: 10px; }
+header p { max-width: 60rem; font-size: 1.05rem; }
+.muted { color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1rem; }
+.stack { display: grid; gap: 1rem; }
+.card { overflow-x: auto; padding: 1.1rem 1.25rem; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+table { width: 100%; margin: 0.6rem 0; border-collapse: collapse; font-size: 0.93em; }
+th, td { padding: 0.35rem 0.8rem 0.35rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+thead th { color: var(--muted); font-size: 0.85em; font-weight: 600; }
+td:first-child { font-weight: 600; white-space: nowrap; }
+.matrix { width: auto; }
+.matrix th, .matrix td { padding: 0.6rem 0.8rem; border: 1px solid var(--line); }
+.matrix thead th:first-child { border-top: 0; border-left: 0; }
+.matrix tbody th { white-space: nowrap; }
+.matrix td { min-width: 11rem; cursor: help; }
+.matrix td.equilibrium { box-shadow: inset 0 0 0 2px var(--equilibrium); }
+.matrix td.pareto_optimal { box-shadow: inset 0 0 0 2px var(--pareto); }
+.matrix td.equilibrium.pareto_optimal { box-shadow: inset 0 0 0 2px var(--equilibrium), inset 0 0 0 4px var(--pareto); }
+.welfare { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.tag, .status, .chip { display: inline-block; padding: 0 0.55rem; border: 1px solid currentColor; border-radius: 999px; font-size: 0.75rem; font-style: normal; font-weight: 600; }
+.tag { display: block; width: max-content; margin-top: 0.35rem; }
+.tag.equilibrium, .status.Deadweight { color: var(--equilibrium); }
+.tag.pareto_optimal, .status.Clean { color: var(--pareto); }
+h3 .status { margin-left: 0.5rem; vertical-align: middle; }
+.chip { margin-right: 0.35rem; color: var(--muted); font-size: 0.85rem; font-weight: 400; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.3rem 1rem; margin: 0.7rem 0 0; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+ol { margin: 0.8rem 0 0; padding-left: 1.3rem; }
+.changed { animation: changed 2s ease-out; }
+@keyframes changed {
+  from { box-shadow: 0 0 0 3px var(--accent); }
+  to { box-shadow: 0 0 0 3px transparent; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <span id="link">connecting</span>
+  <a href="/api/markdown">markdown</a>
+  <a href="/api/document">json</a>
+</nav>
+<main id="app"></main>
+<script>
+const app = document.getElementById('app');
+const link = document.getElementById('link');
+let seen = null;
+let fresh = new Map();
+
+const h = (tag, props, ...children) => {
+  const node = Object.assign(document.createElement(tag), props);
+  node.append(...children.flat(Infinity).filter(child => child !== null && child !== undefined && child !== false));
+  return node;
+};
+
+const tracked = (key, data, node) => {
+  const json = JSON.stringify(data);
+  fresh.set(key, json);
+  if (seen && seen.get(key) !== json) node.classList.add('changed');
+  return node;
+};
+
+const table = (head, rows) => h('table', {},
+  h('thead', {}, h('tr', {}, head.map(text => h('th', {}, text)))),
+  h('tbody', {}, rows.map(row => h('tr', {}, row.map(cell => h('td', {}, cell))))));
+
+const term = (name, value) => [h('dt', {}, name), h('dd', {}, value)];
+
+const status = payoff => h('span', { className: `status ${payoff.status}` }, payoff.status);
+
+const section = (title, className, items, none) => [
+  h('h2', {}, title),
+  items.length ? h('div', { className }, items) : h('p', { className: 'muted' }, none),
+];
+
+const playerCard = player => tracked(`player:${player.name}`, player, h('article', { className: 'card' },
+  h('h3', {}, player.name),
+  h('p', {}, player.summary),
+  table(['Game', 'Description'], player.games.map(entry => [entry.name, entry.description])),
+  table(['Move', 'Description'], player.moves.map(entry => [entry.name, entry.description])),
+  table(['Outcome', 'Effect'], player.outcomes.map(outcome => [outcome.name, outcome.effect]))));
+
+const gameCard = game => tracked(`game:${game.name}`, game, h('article', { className: 'card' },
+  h('h3', {}, game.name),
+  h('dl', {},
+    term('Trigger', game.trigger),
+    term('Players', game.players.map(name => h('span', { className: 'chip' }, name)))),
+  h('ol', {}, game.steps.map(step => h('li', {}, step)))));
+
+const payoffTable = (doc, payoff) => tracked('payoff', payoff, h('article', { className: 'card' },
+  table(
+    ['Game', 'Equilibrium', 'Welfare', 'Pareto-optimal', 'Gap', 'Status'],
+    doc.analysis.map((analysis, index) => [
+      analysis.game,
+      payoff[index].equilibrium,
+      payoff[index].welfare,
+      payoff[index].pareto_welfare,
+      payoff[index].gap,
+      status(payoff[index]),
+    ]))));
+
+const analysisCard = (doc, analysis, payoff) => {
+  const effect = (player, outcome) => {
+    const found = doc.players.find(({ name }) => name === player)?.outcomes.find(({ name }) => name === outcome);
+    return found ? `${player}, ${outcome}: ${found.effect}` : `${player}, ${outcome}`;
+  };
+  const cell = (row, col, { outcomes, welfare }) => {
+    const tags = [['equilibrium', 'Equilibrium'], ['pareto_optimal', 'Pareto-optimal']]
+      .filter(([field]) => Array.isArray(analysis[field]) && analysis[field][0] === row && analysis[field][1] === col);
+    return h('td', {
+      className: tags.map(([field]) => field).join(' '),
+      title: `${effect(analysis.row_player, outcomes[0])}\n${effect(analysis.col_player, outcomes[1])}`,
+    },
+      h('b', { className: 'welfare' }, welfare),
+      outcomes.join(', '),
+      tags.map(([field, text]) => h('em', { className: `tag ${field}` }, text)));
+  };
+  return tracked(`analysis:${analysis.game}`, [analysis, payoff], h('article', { className: 'card' },
+    h('h3', {}, analysis.game, status(payoff)),
+    analysis.row_moves.length > 0 && h('table', { className: 'matrix' },
+      h('thead', {}, h('tr', {},
+        h('th', {}),
+        analysis.col_moves.map(col => h('th', {}, `${analysis.col_player}: ${col}`)))),
+      h('tbody', {}, analysis.row_moves.map((row, index) => h('tr', {},
+        h('th', {}, `${analysis.row_player}: ${row}`),
+        analysis.col_moves.map((col, column) => cell(row, col, analysis.cells[index][column])))))),
+    h('dl', {},
+      term('Equilibrium', `${payoff.equilibrium} = ${payoff.welfare}`),
+      term('Pareto-optimal', `${payoff.pareto_optimal} = ${payoff.pareto_welfare}`),
+      term('Gap', payoff.gap),
+      analysis.fix && term('Fix', analysis.fix),
+      analysis.worse_than_deadweight && term('Worse than deadweight', analysis.worse_than_deadweight))));
+};
+
+const render = ({ document: doc, payoff }) => {
+  fresh = new Map();
+  document.title = doc.title || 'Nash';
+  app.replaceChildren(
+    tracked('overview', [doc.title, doc.summary], h('header', {},
+      h('h1', {}, doc.title || 'Untitled game'),
+      h('p', {}, doc.summary))),
+    ...section('Players', 'cards', doc.players.map(playerCard), 'No players.'),
+    ...section('Games', 'cards', doc.games.map(gameCard), 'No games.'),
+    ...section('Payoff Analysis', 'stack', doc.analysis.length ? [
+      payoffTable(doc, payoff),
+      ...doc.analysis.map((analysis, index) => analysisCard(doc, analysis, payoff[index])),
+    ] : [], 'No analysis.'));
+  seen = fresh;
+};
+
+const source = new EventSource('/api/events');
+source.onopen = () => {
+  link.textContent = 'live';
+  link.className = 'live';
+};
+source.onerror = () => {
+  link.textContent = 'reconnecting';
+  link.className = '';
+};
+source.onmessage = event => render(JSON.parse(event.data));
+</script>
+</body>
+</html>
